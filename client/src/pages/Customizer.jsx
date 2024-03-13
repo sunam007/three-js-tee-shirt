@@ -26,7 +26,25 @@ const Customizer = () => {
         <AnimatePresence>
             { ( !snap.intro ) && (
                 <>
-                Customizer
+                <motion.div
+                key={"custom"}
+                className="absolute top-0 left-0 z-10"
+                {...slideAnimation('left')}
+                >
+                    <div className="flex items-center min-h-screen">
+                        <div className="editortabs-container tabs">
+                        {EditorTabs.map(tab => (
+                            <Tab
+                            key={tab.name}
+                            tab={tab}
+                            handleClick={() => {} }
+                            />
+                        ))}
+                        </div>
+                    </div>
+
+                </motion.div>
+
                 </>
             )
 
@@ -39,6 +57,10 @@ const Customizer = () => {
 export default Customizer;
 
 /*
-AnimatePresence allows components to animate out when they're removed from the React tree.
+-- AnimatePresence allows components to animate out when they're removed from the React tree.
+
+-- There's a motion component for every HTML and SVG element, for instance motion.div, motion.circle etc.
+https://www.framer.com/motion/component/
+
 
 */
